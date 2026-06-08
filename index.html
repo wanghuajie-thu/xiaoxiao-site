@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xiaoxiao对话录</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&display=swap');
+
+        :root {
+            --bg-color: #F5F0E6;
+            --paper-color: #FAF8F3;
+            --ink-color: #2C2C2C;
+            --light-ink: #5A5A5A;
+            --accent-color: #C94C4C;
+            --subtle-border: #E8E0D0;
+            --cinnabar: #B83B3B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+            background: var(--bg-color);
+            color: var(--ink-color);
+            line-height: 1.9;
+            letter-spacing: 0.05em;
+        }
+
+        .scroll-top {
+            height: 60px;
+            background: linear-gradient(to bottom, #D4C4A8, var(--bg-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .scroll-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 30px 120px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0 40px;
+            position: relative;
+        }
+
+        .header-seal {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--cinnabar);
+            border-radius: 4px;
+            margin: 0 auto 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--cinnabar);
+            line-height: 1.2;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--ink-color);
+            margin-bottom: 12px;
+        }
+
+        .header .subtitle {
+            font-size: 13px;
+            color: var(--light-ink);
+        }
+
+        .chapter-card {
+            margin-bottom: 40px;
+            padding: 40px;
+            background: var(--paper-color);
+            border-radius: 2px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.02);
+        }
+
+        .chapter-header {
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--subtle-border);
+        }
+
+        .chapter-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .chapter-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            border: 1px solid var(--subtle-border);
+            border-radius: 50%;
+            font-size: 13px;
+            color: var(--light-ink);
+            text-align: center;
+        }
+
+        .chapter-date {
+            font-size: 11px;
+            color: #8B7355;
+            letter-spacing: 0.1em;
+        }
+
+        .chapter-title {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--ink-color);
+            margin-bottom: 12px;
+        }
+
+        .chapter-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 10px;
+            color: #6B6B6B;
+            background: transparent;
+            padding: 3px 10px;
+            border: 1px solid var(--subtle-border);
+            border-radius: 20px;
+        }
+
+        .chapter-content {
+            padding: 0;
+        }
+
+        .chapter-content h2 {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--ink-color);
+            margin: 36px 0 20px;
+            padding-left: 16px;
+            border-left: 2px solid var(--accent-color);
+        }
+
+        .chapter-content p {
+            font-size: 15px;
+            line-height: 2;
+            margin-bottom: 20px;
+            text-align: justify;
+            color: var(--light-ink);
+        }
+
+        .chapter-content strong {
+            font-weight: 500;
+            color: var(--ink-color);
+        }
+
+        .quote-block {
+            padding: 24px 0;
+            margin: 32px 0;
+            border-top: 1px solid var(--subtle-border);
+            border-bottom: 1px solid var(--subtle-border);
+            text-align: center;
+        }
+
+        .quote-block p {
+            font-size: 16px;
+            color: var(--ink-color);
+            margin: 0;
+        }
+
+        .divider {
+            text-align: center;
+            color: var(--subtle-border);
+            font-size: 12px;
+            margin: 50px 0;
+            letter-spacing: 8px;
+        }
+
+        .scroll-bottom {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .scroll-bottom-seal {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto;
+            border: 2px solid #8B7355;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #8B7355;
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 26px;
+            }
+            .scroll-container {
+                padding: 30px 20px 100px;
+            }
+            .chapter-card {
+                padding: 30px 25px;
+            }
+            .chapter-content h2 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-top"></div>
+
+    <div class="scroll-container">
+        <header class="header">
+            <div class="header-seal">xiaoxiao</div>
+            <h1>对话录</h1>
+            <p class="subtitle">看见自己 · 探索真实感受 · 建设内在力量</p>
+        </header>
+
+        <!-- 章节循环：直接显示，不折叠 -->
+        
+        <div class="chapter-card">
+            <div class="chapter-header">
+                <div class="chapter-header-top">
+                    <div class="chapter-number">壹</div>
+                    <div class="chapter-date">二二〇二六六月四日</div>
+                </div>
+                <h2 class="chapter-title">荒岛求生思维训练与AI工具应用交流：认识自我与教育成长探讨</h2>
+                <div class="chapter-tags">
+                    {{#each tags}}
+                    <span class="tag"></span>
+                    
+                </div>
+            </div>
+
+            <div class="chapter-content">
+                
+            </div>
+        </div>
+        {{/each}}
+
+        <div class="scroll-bottom">
+            <div class="scroll-bottom-seal">待续</div>
+        </div>
+    </div>
+
+    <div class="scroll-top" style="height: 40px; background: linear-gradient(to top, #D4C4A8, var(--bg-color));"></div>
+</body>
+</html>
